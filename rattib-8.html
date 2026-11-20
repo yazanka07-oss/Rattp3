@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#FAF7F2">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>رتّب | RATTIB</title>
+<style>
+:root{--bg:#FAF7F2;--b2:#F1ECE2;--cd:#fff;--tx:#23211D;--t2:#68635B;--t3:#938D82;--bd:#E4DDD0;--ac:#48685A;--as:#E5EFEA;--at:#fff;--dg:#B84738;--ds:#FBEAE8;--wn:#C27824;--ws:#FDF3E4;--sc:#387654;--ss:#E4F3EA;--r:14px}
+[data-theme=dark]{--bg:#171816;--b2:#222420;--cd:#262925;--tx:#EFECE6;--t2:#B0ABA1;--t3:#7F7A70;--bd:#373B35;--ac:#689480;--as:#26362F;--at:#121412;--dg:#E06C5E;--ds:#3A2320;--wn:#E09F49;--ws:#382D1E;--sc:#58A67C;--ss:#21372B}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{background:var(--bg);color:var(--tx);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans Arabic",Tahoma,sans-serif}
+body{overflow-x:clip;padding-bottom:calc(76px + env(safe-area-inset-bottom,0px))}
+button,input,select,textarea{font:inherit;color:inherit;border:0;background:none;outline:0}
+button{cursor:pointer}
+header{position:sticky;top:0;z-index:40;background:var(--bg);border-bottom:1px solid var(--bd);padding:10px 14px;padding-top:calc(10px + env(safe-area-inset-top,0px));display:flex;align-items:center;gap:8px}
+.logo{width:36px;height:36px;border-radius:11px;background:var(--ac);color:var(--at);display:grid;place-items:center;font-weight:800}
+.bt{font-weight:800;font-size:1.2rem;flex:1}
+header select{width:auto;max-width:130px;font-size:.85rem;padding:8px}
+.ib{min-width:40px;height:40px;border-radius:10px;background:var(--b2)}
+main{max-width:720px;margin:0 auto;padding:14px}
+.card,.ic{background:var(--cd);border:1px solid var(--bd);border-radius:var(--r);padding:14px;margin-bottom:10px}
+.hero{background:linear-gradient(135deg,var(--as),var(--cd));border:1px solid var(--bd);border-radius:20px;padding:18px;margin-bottom:14px}
+.hs{font-weight:700;margin-bottom:12px}
+.btn{min-height:44px;padding:8px 16px;border-radius:10px;font-weight:600;background:var(--b2);border:1px solid var(--bd);display:inline-flex;align-items:center;justify-content:center;gap:6px}
+.btn.p{background:var(--ac);color:var(--at);border-color:var(--ac)}
+.btn.d{background:var(--ds);color:var(--dg);border-color:var(--dg)}
+.sm{min-height:42px;padding:6px 14px;font-size:.88rem;border-radius:10px}
+.blk{width:100%}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:14px}
+.tile{background:var(--cd);border:1px solid var(--bd);border-radius:var(--r);padding:14px 8px;display:flex;flex-direction:column;align-items:center;gap:2px;font-weight:600;font-size:.88rem}
+.tile b{font-size:1.5rem;color:var(--ac)}
+h2{font-size:1.02rem;margin:16px 0 8px}
+.fg{margin-bottom:12px}.fg label{display:block;font-size:.85rem;color:var(--t2);font-weight:600;margin-bottom:4px}
+input,select,textarea{width:100%;background:var(--b2);border:1px solid var(--bd);border-radius:10px;padding:10px 12px}
+input:focus,select:focus,textarea:focus{border-color:var(--ac)}
+.row{display:flex;gap:10px;align-items:flex-start}.row input{flex:1}.grow{flex:1;min-width:0}
+.chips{display:flex;gap:6px;overflow-x:auto;margin-top:10px;scrollbar-width:none;align-items:center}
+.chip{padding:6px 13px;border-radius:99px;background:var(--b2);color:var(--t2);font-size:.83rem;font-weight:600;white-space:nowrap}
+.chip.on{background:var(--ac);color:var(--at)}
+.bg{display:inline-block;padding:2px 9px;border-radius:99px;font-size:.74rem;font-weight:600;background:var(--b2);color:var(--t2)}
+.bg.a{background:var(--as);color:var(--ac)}.bg.w{background:var(--ws);color:var(--wn)}.bg.r{background:var(--ds);color:var(--dg)}.bg.g{background:var(--ss);color:var(--sc)}
+.tt{font-weight:700;word-break:break-word}.tt.dn{text-decoration:line-through;color:var(--t3)}
+.bd{white-space:pre-wrap;word-break:break-word;color:var(--t2);font-size:.9rem;margin:4px 0}
+.mt{display:flex;flex-wrap:wrap;gap:5px;font-size:.75rem;color:var(--t3);margin-top:6px}
+.ac{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;padding-top:10px;border-top:1px dashed var(--bd)}
+.chk{width:26px;height:26px;border-radius:8px;border:2px solid var(--ac);flex-shrink:0;color:var(--at);font-weight:800;margin-top:2px}.chk.on{background:var(--ac)}
+.pr{height:8px;background:var(--b2);border-radius:9px;overflow:hidden;margin-top:8px}.pr i{display:block;height:100%;background:var(--ac)}
+.emp{text-align:center;padding:24px 14px;border:1px dashed var(--bd);border-radius:var(--r);color:var(--t3);margin-bottom:10px}
+nav{position:fixed;bottom:0;right:0;left:0;z-index:50;background:var(--cd);border-top:1px solid var(--bd);display:grid;grid-template-columns:repeat(6,1fr);padding-bottom:env(safe-area-inset-bottom,0px)}
+nav button{padding:8px 0 6px;font-size:.7rem;font-weight:600;color:var(--t3);display:flex;flex-direction:column;align-items:center}
+nav button b{font-size:1.25rem;line-height:1.2}nav .on{color:var(--ac)}
+#cvw{border:2px solid var(--bd);border-radius:var(--r);overflow:hidden;background:#fff;touch-action:none}
+#cv{display:block;width:100%;height:320px;touch-action:none}
+.sw{width:30px;height:30px;border-radius:50%;border:2px solid var(--bd);flex-shrink:0;padding:0}.sw.on{border-color:var(--tx);transform:scale(1.15)}
+#mb{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:100;display:none;align-items:flex-end;justify-content:center}#mb.o{display:flex}
+#md{width:100%;max-width:680px;max-height:90vh;overflow-y:auto;background:var(--cd);border-radius:22px 22px 0 0;padding:16px 16px calc(20px + env(safe-area-inset-bottom,0px))}
+#ts{position:fixed;top:12px;left:12px;right:12px;z-index:200;display:flex;flex-direction:column;align-items:center;gap:6px;pointer-events:none}
+.to{background:var(--tx);color:var(--bg);padding:10px 16px;border-radius:10px;font-weight:600;font-size:.88rem;max-width:460px}.to.error{background:var(--dg);color:#fff}.to.success{background:var(--sc);color:#fff}
+audio{width:100%;margin-top:6px}
+#md{max-height:85dvh;animation:up .2s ease-out}@keyframes up{from{transform:translateY(40px);opacity:0}}
+main>*{animation:fi .18s ease-out}.to{animation:fi .2s}@keyframes fi{from{opacity:0}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}
+details>summary{list-style:none;cursor:pointer;color:var(--ac);font-weight:600;padding:8px 0}details>summary::-webkit-details-marker{display:none}.stats{color:var(--t2);font-size:.9rem;margin-bottom:6px}.hint{background:var(--as);border-radius:var(--r);padding:14px;margin-bottom:12px}
+#rb{position:fixed;right:10px;left:10px;bottom:calc(72px + env(safe-area-inset-bottom,0px));z-index:60;display:none;align-items:center;gap:8px;background:var(--cd);border:2px solid var(--dg);border-radius:14px;padding:8px 12px;box-shadow:0 4px 16px rgba(0,0,0,.2)}.dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--dg);animation:bl 1s infinite}@keyframes bl{50%{opacity:.25}}
+</style>
+</head>
+<body>
+<header><button class="ib" id="bk" data-a="back" style="display:none" aria-label="رجوع">→</button><div class="logo">ر</div><div class="bt">رتّب</div><select id="sp"></select><button class="ib" data-a="th">◐</button></header>
+<main id="app"></main>
+<nav id="nv"></nav>
+<div id="rb"></div>
+<div id="mb"><div id="md"></div></div>
+<div id="ts"></div>
+<script>
+'use strict';
+const $=s=>document.querySelector(s),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])),uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,8);
+const TY={idea:'فكرة',note:'ملاحظة',task:'مهمة',project:'مشروع',audio:'تسجيل',draw:'رسمة'};
+const ST={new:'جديدة',doing:'قيد التنفيذ',done:'مكتملة'},FQ={'':'عامة',day:'يومية',week:'أسبوعية',month:'شهرية',year:'سنوية'},PS={active:'نشط',paused:'متوقف',done:'مكتمل'};
+const FF={'':'كل الفترات',day:'يومية',week:'أسبوعية',month:'شهرية',year:'سنوية'},SF={'':'كل الحالات',new:'جديدة',doing:'قيد التنفيذ',done:'مكتملة',late:'متأخرة'};
+const PR={'':'بدون',h:'عالية',m:'متوسطة',l:'منخفضة'},PD={'':'كل المواعيد',today:'اليوم',week:'خلال 7 أيام',month:'خلال 30 يوماً',year:'خلال سنة'};
+const NV=[['home','الرئيسية','⌂'],['idea','أفكار','✦'],['task','مهام','☑'],['project','مشاريع','◧'],['note','ملاحظات','✎'],['more','المزيد','☰']];
+let lastErr,FR,sy,lastJ,lastT=Date.now(),acc=0,pzd=0,pend=null,db,D=[],FO,rec,chunks,tm,t0,S={stk:[],v:'home',q:'',f:{},sp:'',st:[],col:'#23211D',sz:4,ar:0,pid:'',rec:0,bg:null};
+const toast=(m,k)=>{const e=document.createElement('div');e.className='to '+(k||'');e.textContent=m;$('#ts').append(e);setTimeout(()=>e.remove(),k=='error'?4800:2300)};
+const mo=h=>{$('#md').innerHTML=h;$('#mb').classList.add('o')},cm=()=>$('#mb').classList.remove('o');
+$('#mb').onclick=e=>{if(e.target.id=='mb')cm()};
+const dlg=(msg,btns,danger)=>new Promise(r=>{mo(`<p class="bd" style="font-size:1rem;color:var(--tx)">${esc(msg)}</p><div class="ac" style="border:0">${btns.map((b,i)=>`<button class="btn blk ${danger||i?'d':'p'}" data-i="${i}">${b}</button>`).join('')}<button class="btn blk" data-i="-1">إلغاء</button></div>`);$('#md').onclick=e=>{const b=e.target.closest('[data-i]');if(b){cm();$('#md').onclick=null;r(+b.dataset.i)}}});
+const tx=(s,m,f)=>new Promise((ok,no)=>{const t=db.transaction(s,m),r=f(t.objectStore(s));t.oncomplete=()=>ok(r.result);t.onerror=t.onabort=()=>no(t.error)});
+const put=(o,s='items')=>tx(s,'readwrite',x=>x.put(o)),rm=(id,s='items')=>tx(s,'readwrite',x=>x.delete(id)),all=(s='items')=>tx(s,'readonly',x=>x.getAll()),get=(id,s)=>tx(s,'readonly',x=>x.get(id));
+async function sv(o,quiet){try{o.upd=Date.now();await put(o);const i=D.findIndex(x=>x.id==o.id);if(i<0)D.push(o);else D[i]=o;if(!quiet)toast('تم الحفظ ✓','success');return 1}catch(e){toast('فشل الحفظ: '+((e&&e.message)||'خطأ'),'error');return 0}}
+const td=()=>{const d=new Date();return new Date(d-d.getTimezoneOffset()*6e4).toISOString().slice(0,10)};
+const fd=t=>new Date(t).toLocaleDateString('ar',{day:'numeric',month:'short'});
+const fm=s=>Math.floor(s/60)+':'+String(Math.floor(s%60)).padStart(2,'0');
+const L=(t,a)=>D.filter(x=>x.type==t&&!!x.arch==!!a&&(!S.sp||x.sp==S.sp)).sort((a,b)=>b.created-a.created);
+const hit=x=>!S.q||((x.title||'')+' '+(x.body||'')+' '+(x.goals||'')).toLowerCase().includes(S.q.toLowerCase());
+const pn=id=>(D.find(x=>x.id==id)||{}).title||'';
+const addD=(s,n)=>{const d=new Date(s+'T12:00:00');d.setDate(d.getDate()+n);return d.toISOString().slice(0,10)};
+const addF=(s,f,a)=>{const d=new Date(s+'T12:00:00');if(f=='day')d.setDate(d.getDate()+1);if(f=='week')d.setDate(d.getDate()+7);if(f=='month'||f=='year'){const dy=a||d.getDate();d.setDate(1);if(f=='month')d.setMonth(d.getMonth()+1);else d.setFullYear(d.getFullYear()+1);d.setDate(Math.min(dy,new Date(d.getFullYear(),d.getMonth()+1,0).getDate()))}return d.toISOString().slice(0,10)};
+const inPd=x=>{if(!x.due||x.st=='done')return false;const t=td();return x.due>=t&&x.due<=({today:t,week:addD(t,6),month:addD(t,29),year:addD(t,364)})[S.f.pd]};
+const pri=x=>({h:0,m:1,l:2})[x.pr]??3;
+async function nextRec(x){const a=x.dom||+(x.due||td()).slice(8);let n=addF(x.due||td(),x.fq,a);while(n<=td())n=addF(n,x.fq,a);const root=x.root||x.id,id='r_'+root+'_'+n;if(D.some(y=>y.id==id))return;if(await sv({...x,id,root,dom:a,st:'new',due:n,arch:0,created:Date.now()},1))toast('أُنشئت المهمة المتكررة التالية بتاريخ '+n,'success')}
+const late=x=>x.type=='task'&&x.st!='done'&&x.due&&x.due<td();
+const prog=p=>{const t=D.filter(x=>x.type=='task'&&x.pj==p.id&&!x.arch);return t.length?Math.round(t.filter(x=>x.st=='done').length/t.length*100):0};
+const prim=x=>x.arch?['rs','استعادة','p']:({project:['open','فتح','p'],audio:['play','▶ تشغيل','p'],draw:['view','عرض','p'],idea:['toTask','← حوّلها لمهمة','p'],note:['edit','تعديل'],task:x.st=='new'?['doing','بدء التنفيذ']:['edit','تعديل']})[x.type];
+const acts=x=>{const t=x.type;return x.arch?[['rs','استعادة'],['edit','تعديل'],['del','حذف نهائي','d']]:[['edit','تعديل'],...(t=='task'&&!x.par?[['sub','إضافة مهمة فرعية']]:[]),...(t=='task'&&x.st!='done'?[['snz','تأجيل إلى الغد'],['snw','تأجيل أسبوعاً']]:[]),...(t=='task'&&x.st=='new'?[['doing','بدء التنفيذ']]:[]),...(t=='idea'?[['toTask','حوّلها إلى مهمة'],['toNote','حوّلها إلى ملاحظة'],['toProj','حوّلها إلى مشروع'],['later',x.later?'إلغاء التأجيل':'تأجيل الفكرة']]:[]),['arch','أرشفة'],['del','حذف نهائي','d']]};
+function card(x,showT){
+ const t=x.type,A=(a,l,c='')=>`<button class="btn sm ${c}" data-a="${a}" data-id="${x.id}">${l}</button>`;
+ const m=[showT?`<span class="bg a">${TY[t]}</span>`:'',`<span>${fd(x.created)}</span>`];
+ if(x.pj&&pn(x.pj))m.push(`<span class="bg">◧ ${esc(pn(x.pj))}</span>`);
+ if(t=='task'){if(x.due)m.push(`<span class="bg ${late(x)?'r':''}">${late(x)?'متأخرة: ':''}${esc(x.due)}</span>`);m.push(`<span class="bg ${x.st=='done'?'g':x.st=='doing'?'w':''}">${ST[x.st]}</span>`);if(x.fq)m.push(`<span class="bg">↻ ${FQ[x.fq]}</span>`);if(x.pr)m.push(`<span class="bg ${x.pr=='h'?'r':x.pr=='m'?'w':''}">أولوية ${PR[x.pr]}</span>`)}
+ if(t=='idea'&&x.later)m.push('<span class="bg w">مؤجلة</span>');
+ if(t=='project'){m.push(`<span class="bg a">${PS[x.ps]}</span>`);if(x.ed)m.push(`<span class="bg">حتى ${esc(x.ed)}</span>`)}
+ if(t=='audio')m.push(`<span class="bg">⏱ ${fm(x.dur||0)}</span>`);
+ const b=(x.body||'').slice(0,260);
+ const pm=prim(x),ac=(pm?`<button class="btn sm ${pm[2]||''}" data-a="${pm[0]}" data-id="${x.id}">${pm[1]}</button>`:'')+`<button class="btn sm" data-a="mn" data-id="${x.id}">⋯ خيارات</button>`;
+ return `<div class="ic"><div class="row">${t=='task'?`<button class="chk ${x.st=='done'?'on':''}" data-a="tg" data-id="${x.id}">${x.st=='done'?'✓':''}</button>`:''}<div class="grow" ${['idea','note','task','project'].includes(t)?`data-a="${t=='project'?'open':'edit'}" data-id="${x.id}"`:''}>${x.title?`<div class="tt ${x.st=='done'?'dn':''}">${esc(x.title)}</div>`:''}${b?`<div class="bd">${esc(b)}</div>`:''}${t=='draw'?`<img src="${esc(x.img)}" style="width:100%;max-height:160px;object-fit:contain;background:#fff;border-radius:8px">`:''}${t=='project'?`<div class="pr"><i style="width:${prog(x)}%"></i></div><div class="mt">${prog(x)}% مكتمل</div>`:''}${subs(x)}<div class="mt">${m.join('')}</div><div id="au_${x.id}"></div></div></div><div class="ac">${ac}</div></div>`}
+const ch=(k,o)=>`<div class="chips">${Object.entries(o).map(([a,b])=>`<button class="chip ${(S.f[k]||'')==a?'on':''}" data-a="fl" data-k="${k}" data-v="${a}">${b}</button>`).join('')}</div>`;
+const tp=(t,x='')=>`<div class="row"><input id="q" placeholder="بحث…" value="${esc(S.q)}"><button class="btn p" data-a="add" data-t="${t}">+ جديد</button></div>${x}<div style="height:10px"></div><div id="list"></div>`;
+function items(){let r=L(S.v).filter(hit);if(S.v=='task')r=r.filter(x=>!x.par);if(S.v=='idea'){if(S.f.lt=='y')r=r.filter(x=>x.later);else if(S.f.lt=='n')r=r.filter(x=>!x.later)}if(S.v=='task'){if(S.f.fq)r=r.filter(x=>x.fq==S.f.fq);if(S.f.pd)r=r.filter(inPd);if(S.f.pf)r=r.filter(x=>x.pr==S.f.pf);const s=S.f.st;if(s=='late')r=r.filter(late);else if(s)r=r.filter(x=>x.st==s);r.sort((a,b)=>((a.st=='done')-(b.st=='done'))||((a.due||'9')<(b.due||'9')?-1:(a.due||'9')>(b.due||'9')?1:pri(a)-pri(b)))}return r}
+const V={},LS={};
+V.home=()=>{const t=td(),lt=L('task').filter(late).sort((a,b)=>a.due<b.due?-1:1),ra=L('audio').slice(0,3),ts=L('task').filter(x=>x.st!='done'&&!late(x)&&(x.due==t||x.pr=='h')),rc=D.filter(x=>!['space','audio','reminder'].includes(x.type)&&!x.arch&&(!S.sp||x.sp==S.sp)).sort((a,b)=>(b.upd||b.created)-(a.upd||a.created)).slice(0,4),op=L('task').filter(x=>x.st!='done').length,pj=L('project').filter(p=>p.ps=='active').length;
+ return `<div class="hero"><div class="hs">أهلاً بك 👋<br><small style="font-weight:400;color:var(--t2)">طلّع اللي ببالك، والباقي منرتّبه</small></div><div class="row" style="margin-bottom:6px"><input id="hq" placeholder="فضّي اللي ببالك..."><button class="btn p" data-a="hqt">+ مهمة</button><button class="btn" data-a="hqi">+ فكرة</button></div><div class="bd" style="margin:0 0 8px">فكرة، مهمة، أو أي شي بدك تتذكره</div><button class="btn blk" data-a="qi" style="min-height:44px">✎ مساحة كتابة أكبر</button><button class="btn blk ${S.rec?'d':''}" data-a="rec" style="margin-top:8px;min-height:52px">${S.rec?'● التسجيل جارٍ — افتح':'🎙 سجّل اللي ببالك'}</button></div><div class="chips" style="margin:0 0 6px"><button class="chip" data-a="go" data-v="idea">✦ الأفكار</button><button class="chip" data-a="go" data-v="project">◧ المشاريع</button><button class="chip" data-a="go" data-v="rem">⏰ التذكيرات</button></div>${rc.length?'':'<div class="hint">ابدأ من هنا:<br>١. اضغط «فضّي اللي ببالك» واكتب أي شيء.<br>٢. حوّله إلى مهمة بضغطة واحدة.<br>٣. تابع يومك من هذه الصفحة.</div>'}<div class="stats">${L('idea').length} فكرة · ${op} مهمة مفتوحة · ${pj} مشروع نشط</div>${lt.length?`<h2>متأخرة (${lt.length})</h2>${lt.slice(0,4).map(x=>card(x)).join('')}`:''}<h2>مهام اليوم</h2>${ts.slice(0,6).map(x=>card(x)).join('')||'<div class="emp">لا مهام متأخرة أو مستحقة اليوم</div>'}${upc().length?`<h2>التذكيرات القادمة</h2>${upc().slice(0,3).map(o=>`<div class="ic" data-a="go" data-v="rem"><div class="tt">⏰ ${esc(o.x.title)}</div><div class="mt">${fdt(o.f)}</div></div>`).join('')}`:''}${ra.length?`<h2>آخر التسجيلات</h2>${ra.map(x=>card(x)).join('')}`:''}${rc.length?`<h2>تابع من حيث توقفت</h2>${rc.map(x=>card(x,1)).join('')}`:''}`};
+V.idea=()=>tp('idea',ch('lt',{'':'الكل',n:'النشطة',y:'المؤجلة'}));V.note=()=>tp('note');V.project=()=>tp('project');V.task=()=>tp('task',ch('st',SF)+`<details ${S.f.pd||S.f.pf||S.f.fq?'open':''}><summary>تصفية أخرى (الموعد، الأولوية، التكرار)</summary>${ch('pd',PD)}${ch('pf',{'':'كل الأولويات',h:'عالية',m:'متوسطة',l:'منخفضة'})}${ch('fq',FF)}</details>`);
+V.audio=()=>`<div class="card" style="text-align:center">${S.rec?`<button class="btn d blk" data-a="rec">● التسجيل جارٍ (<span class="rt">${fm(el()/1000)}</span>) — افتح</button>`:`<button class="btn p blk" data-a="rec">● تسجيل جديد</button>`}<div class="bd" style="margin-top:8px">يحتاج إذن الميكروفون، وقد لا يعمل إذا فُتح الملف مباشرة من مدير الملفات أو داخل تطبيق لم يمنح هذا الإذن.</div><label class="btn blk" style="margin-top:8px">أو سجّل بتطبيق التسجيل في جهازك<input type="file" accept="audio/*" capture class="af" style="display:none"></label><label class="btn blk" style="margin-top:8px">📁 اختيار ملف صوتي من الجهاز<input type="file" accept="audio/*" class="af" style="display:none"></label></div><input id="q" placeholder="بحث…" value="${esc(S.q)}"><div style="height:10px"></div><div id="list"></div>`;
+V.draw=()=>`<div id="cvw"><canvas id="cv"></canvas></div><div class="chips">${['#23211D','#48685A','#B84738','#2F6DB5','#C27824','#FFFFFF'].map(c=>`<button class="sw ${S.col==c?'on':''}" style="background:${c}" data-a="col" data-v="${c}"></button>`).join('')}<input type="range" min="1" max="24" value="${S.sz}" id="sz" style="width:100px"></div><div class="ac" style="border:0;margin:0"><button class="btn sm" data-a="undo">↶ تراجع</button><button class="btn sm" data-a="clr">مسح</button><button class="btn sm p" data-a="sd">حفظ الرسمة</button></div><h2>الرسومات المحفوظة</h2><div id="list"></div>`;
+V.search=()=>`<input id="q" placeholder="ابحث في كل شيء…" value="${esc(S.q)}"><div class="chips"><button class="chip ${S.ar?'':'on'}" data-a="ar" data-v="0">النشطة</button><button class="chip ${S.ar?'on':''}" data-a="ar" data-v="1">الأرشيف</button></div><div style="height:10px"></div><div id="list"></div>`;
+V.pd=()=>{const p=D.find(x=>x.id==S.pid);if(!p)return V.project();const k=t=>D.filter(x=>x.type==t&&x.pj==p.id&&!x.arch),g=(p.goals||'').split('\n').filter(s=>s.trim());
+ return `<button class="btn sm" data-a="go" data-v="project">→ المشاريع</button><div class="card" style="margin-top:10px"><div class="tt" style="font-size:1.15rem">${esc(p.title)}</div><div class="bd">${esc(p.body||'')}</div><span class="bg a">${PS[p.ps]}</span>${p.sd?` <span class="bg">من ${esc(p.sd)}</span>`:''}${p.ed?` <span class="bg">إلى ${esc(p.ed)}</span>`:''}<div class="pr"><i style="width:${prog(p)}%"></i></div><div class="mt">${prog(p)}% — ${k('task').filter(x=>x.st=='done').length} من ${k('task').length} مهمة</div>${g.length?`<h2>الأهداف</h2>${g.map(s=>`<div class="bd">• ${esc(s)}</div>`).join('')}`:''}<div class="ac"><button class="btn sm" data-a="edit" data-id="${p.id}">تعديل</button><button class="btn sm" data-a="arch" data-id="${p.id}">أرشفة</button></div></div><div class="row"><button class="btn p grow" data-a="add" data-t="task" data-pj="${p.id}">+ خطوة / مهمة</button><button class="btn grow" data-a="add" data-t="note" data-pj="${p.id}">+ ملاحظة</button></div><h2>المهام والخطوات</h2>${k('task').map(x=>card(x)).join('')||'<div class="emp">لا مهام بعد</div>'}<h2>الملاحظات والأفكار</h2>${[...k('note'),...k('idea'),...k('audio')].map(x=>card(x,1)).join('')||'<div class="emp">لا ملاحظات بعد</div>'}`};
+V.more=()=>`<div class="grid">${[['audio','🎙','التسجيلات الصوتية'],['draw','✎','الرسم'],['rem','⏰','التذكيرات'],['space','▦','المساحات'],['search','⌕','بحث وأرشيف'],['backup','⇅','نسخ احتياطي'],['th','◐','فاتح / داكن']].map(m=>`<button class="tile" data-a="${m[0]=='th'?'th':'go'}" data-v="${m[0]}"><b>${m[1]}</b><span>${m[2]}</span></button>`).join('')}</div>`;
+V.space=()=>`<button class="btn p blk" data-a="add" data-t="space">+ مساحة جديدة</button><p class="bd" style="margin:10px 0">اختر المساحة الحالية من القائمة أعلى الشاشة. العناصر الجديدة تُضاف إلى المساحة المختارة.</p>${D.filter(x=>x.type=='space').map(s=>`<div class="ic"><div class="tt">${esc(s.title)}</div><div class="mt">${D.filter(x=>x.sp==s.id).length} عنصر</div><div class="ac"><button class="btn sm" data-a="edit" data-id="${s.id}">تعديل الاسم</button><button class="btn sm d" data-a="dsp" data-id="${s.id}">حذف</button></div></div>`).join('')||'<div class="emp">لا مساحات بعد</div>'}`;
+V.backup=()=>`<div class="card"><div class="tt">إنشاء نسخة احتياطية</div><div class="bd">يشمل كل الأفكار والمهام والملاحظات والمشاريع والمساحات والرسومات وملفات التسجيل الصوتي (قد يكبر الملف). لا يشمل: اختيار الوضع الفاتح/الداكن والمساحة الحالية.</div><div class="ac" style="border:0"><button class="btn p" data-a="exp">تنزيل ملف النسخة</button><button class="btn" data-a="cp">نسخ كنص</button></div></div><div class="card"><div class="tt">استعادة نسخة</div><div class="bd">اختر ملف نسخة سابقة. يُتحقق منه ويُسأل عن موافقتك قبل أي تغيير.</div><input type="file" id="fi" accept=".json,application/json"><textarea id="pt" rows="3" placeholder="أو الصق نص النسخة هنا" style="margin-top:8px"></textarea><button class="btn blk" data-a="impt" style="margin-top:8px">استيراد من النص</button></div><div class="card"><div class="tt">حدود التخزين</div><div class="bd">بياناتك محفوظة داخل مخزن المتصفح أو التطبيق على هذا الجهاز فقط، دون أي رفع سحابي. قد تضيع إذا مُسحت بيانات التطبيق، أو أُلغي تثبيته، أو تغيّر مكان فتح الملف أو اسمه. هذه الضمانة غير متوفرة، لذلك خذ نسخة احتياطية بانتظام.</div></div>`;
+LS.idea=LS.note=LS.task=LS.project=LS.audio=LS.draw=()=>items().map(x=>card(x)).join('')||`<div class="emp">${S.q?'لا نتائج':'لا شيء هنا بعد'}</div>`;
+LS.search=()=>{if(!S.q&&!S.ar)return '<div class="emp">اكتب كلمة للبحث في الأفكار والملاحظات والمهام والمشاريع</div>';return D.filter(x=>x.type!='space'&&x.type!='reminder'&&!!x.arch==!!S.ar&&(!S.sp||x.sp==S.sp)&&hit(x)).sort((a,b)=>b.created-a.created).map(x=>card(x,1)).join('')||'<div class="emp">لا نتائج</div>'};
+function pl(){const l=$('#list');if(l&&LS[S.v])l.innerHTML=LS[S.v]()}
+function render(){const v=S.v,act=NV.some(n=>n[0]==v)?v:v=='pd'?'project':'more';
+ $('#app').innerHTML=(V[v]||V.home)();
+ $('#nv').innerHTML=NV.map(n=>`<button class="${n[0]==act?'on':''}" data-a="go" data-v="${n[0]}"><b>${n[2]}</b>${n[1]}</button>`).join('');
+ $('#sp').innerHTML='<option value="">كل المساحات</option>'+D.filter(x=>x.type=='space').map(s=>`<option value="${s.id}" ${S.sp==s.id?'selected':''}>${esc(s.title)}</option>`).join('');
+ $('#bk').style.display=NV.some(n=>n[0]==v)?'none':'';const q=$('#q');if(q)q.oninput=()=>{S.q=q.value;pl()};
+ const fi=$('#fi');if(fi)fi.onchange=()=>{const f=fi.files[0];if(f){const r=new FileReader();r.onload=()=>imp(r.result);r.onerror=()=>toast('تعذرت قراءة الملف','error');r.readAsText(f)}fi.value=''};
+ const sz=$('#sz');if(sz)sz.oninput=()=>{S.sz=+sz.value};
+ if(v=='draw')initCv();rbar();clearTimeout(sy);sy=setTimeout(syncRem,300);
+ pl()}
+/* الرسم */
+function pc(){const c=$('#cv');if(!c)return;const g=c.getContext('2d');g.fillStyle='#fff';g.fillRect(0,0,c.width,c.height);if(S.bg)g.drawImage(S.bg,0,0,c.width,c.height);S.st.forEach(s=>{g.strokeStyle=s.c;g.lineWidth=s.w;g.lineCap=g.lineJoin='round';g.beginPath();s.p.forEach((p,i)=>i?g.lineTo(p[0],p[1]):g.moveTo(p[0],p[1]));if(s.p.length==1)g.lineTo(s.p[0][0]+.1,s.p[0][1]);g.stroke()})}
+function initCv(){const c=$('#cv');c.width=c.clientWidth||300;c.height=c.clientHeight||320;let cur=null;const pt=e=>{const r=c.getBoundingClientRect();return[(e.clientX-r.left)*c.width/r.width,(e.clientY-r.top)*c.height/r.height]};
+ c.onpointerdown=e=>{e.preventDefault();try{c.setPointerCapture(e.pointerId)}catch(x){}cur={c:S.col,w:S.sz,p:[pt(e)]};S.st.push(cur);pc()};
+ c.onpointermove=e=>{if(cur){cur.p.push(pt(e));pc()}};c.onpointerup=c.onpointercancel=()=>{cur=null};pc()}
+/* النماذج */
+const F={idea:['title','body','pj','sp'],note:['title','body','pj','sp'],task:['title','body','due','fq','pr','st','pj','sp','rt','rr'],project:['title','body','ps','goals','sd','ed','sp'],audio:['title','pj','sp'],draw:['title'],space:['title']};
+const MAIN={idea:['body'],note:['title','body'],task:['title','due','pr'],project:['title'],audio:['title'],draw:['title'],space:['title']};
+const LB={title:'العنوان',body:'المحتوى',due:'تاريخ الاستحقاق',fq:'التكرار',st:'الحالة',pj:'المشروع',sp:'المساحة',ps:'حالة المشروع',rt:'وقت التذكير (اختياري)',rr:'تكرار التذكير',goals:'الهدف / الأهداف (سطر لكل هدف)',pr:'الأولوية',sd:'تاريخ البداية (اختياري)',ed:'تاريخ النهاية (اختياري)'};
+function openForm(o,nw){const rmd=D.find(y=>y.id=='rm_'+o.id);if(rmd)o={...o,rt:rmd.t,rr:rmd.r};
+ const pjs=[['','بدون مشروع'],...D.filter(p=>p.type=='project'&&!p.arch).map(p=>[p.id,p.title])],sps=[['','بدون مساحة'],...D.filter(p=>p.type=='space').map(p=>[p.id,p.title])];
+ const sel=(k,a)=>`<select id="f_${k}">${a.map(([v,l])=>`<option value="${esc(v)}" ${v==(o[k]||'')?'selected':''}>${esc(l)}</option>`).join('')}</select>`;
+ const R={body:o.type=='note'||o.type=='idea'?6:3,goals:3};
+ const fl=k=>k=='pj'?sel(k,pjs):k=='sp'?sel(k,sps):k=='fq'?sel(k,Object.entries(FQ)):k=='st'?sel(k,Object.entries(ST)):k=='rt'?`<input type="time" id="f_rt" value="${esc(o.rt)}">`:k=='rr'?sel(k,[['','مرة واحدة'],['day','يومياً'],['week','أسبوعياً'],['month','شهرياً']]):k=='ps'?sel(k,Object.entries(PS)):k=='pr'?sel(k,Object.entries(PR)):(k=='due'||k=='sd'||k=='ed')?`<input type="date" id="f_${k}" value="${esc(o[k])}">${k=='due'?'<div class="chips"><button class="chip" data-a="dd" data-v="0">اليوم</button><button class="chip" data-a="dd" data-v="1">غداً</button><button class="chip" data-a="dd" data-v="7">بعد أسبوع</button><button class="chip" data-a="dd" data-v="">بلا موعد</button></div>':''}`:R[k]?`<textarea id="f_${k}" rows="${R[k]}">${esc(o[k])}</textarea>`:`<input id="f_${k}" value="${esc(o[k])}">`;
+ const mn=MAIN[o.type],ex=F[o.type].filter(k=>!mn.includes(k)),row=k=>`<div class="fg"><label>${LB[k]}</label>${fl(k)}</div>`;FO=o;mo(`<div class="row" style="justify-content:space-between;align-items:center"><b>${nw?'جديد':'تعديل'}: ${TY[o.type]||'مساحة'}</b><button class="ib" data-a="cm">✕</button></div><div style="height:12px"></div>${mn.map(row).join('')}${ex.length?`<details><summary>تفاصيل إضافية</summary>${ex.map(row).join('')}</details>`:''}<button class="btn p blk" data-a="save">حفظ</button>`)}
+const NW={idea:{},note:{},task:{st:'new',fq:'',due:''},project:{ps:'active',goals:''},space:{}};
+const chg=async(id,p,m)=>{const x=D.find(y=>y.id==id);if(x&&await sv({...x,...p},1)){if(m)toast(m,'success');render();return 1}};
+/* الصوت */
+function stopRec(){if(rec&&rec.state!='inactive')rec.stop()}
+const b64=b=>new Promise((ok,no)=>{const f=new FileReader();f.onload=()=>ok(f.result);f.onerror=no;f.readAsDataURL(b)});
+async function mk(){const au=[];for(const a of await all('audio'))au.push({id:a.id,mime:a.mime,data:await b64(a.blob)});return JSON.stringify({app:'rattib',v:1,at:new Date().toISOString(),items:D,audio:au})}
+async function imp(s){let j;try{j=JSON.parse(s)}catch(e){return toast('الملف ليس بصيغة JSON صالحة','error')}
+ const I=/^[\w-]{1,64}$/,K=['idea','note','task','project','audio','draw','space','reminder'];
+ if(!j||j.app!='rattib'||!Array.isArray(j.items)||!j.items.every(x=>x&&typeof x.id=='string'&&I.test(x.id)&&K.includes(x.type)&&typeof x.created=='number'&&(!x.pj||I.test(x.pj))&&(!x.sp||I.test(x.sp))&&['due','sd','ed'].every(k=>!x[k]||/^\d{4}-\d\d-\d\d$/.test(x[k]))&&(x.type!='draw'||/^data:image\//.test(x.img||''))&&(!x.par||I.test(x.par))&&(!x.tk||I.test(x.tk))&&(x.type!='reminder'||(/^\d\d:\d\d$/.test(x.t||'')&&/^\d{4}-\d\d-\d\d$/.test(x.d||''))))||(j.audio&&!(Array.isArray(j.audio)&&j.audio.every(a=>a&&typeof a.id=='string'&&I.test(a.id)&&typeof a.data=='string'&&a.data.startsWith('data:')))))return toast('الملف ليس نسخة رتّب صالحة','error');
+ const m=await dlg(`النسخة تحتوي ${j.items.length} عنصراً (${j.items.filter(x=>!D.some(d=>d.id==x.id)).length} منها جديد، و${(j.audio||[]).length} ملف صوتي، و${j.items.filter(x=>x.type=='draw').length} رسمة)، ولديك الآن ${D.length}.\n«دمج» يضيف عناصر النسخة ويستبدل المتطابقة فقط.\n«استبدال الكل» يمسح بياناتك الحالية ويضع النسخة مكانها. يُفضّل تصدير نسخة من بياناتك الحالية أولاً.`,['دمج مع بياناتي','استبدال الكل']);
+ if(m<0)return;
+ try{const au=[];for(const a of j.audio||[])au.push({id:a.id,mime:a.mime||'audio/webm',blob:await(await fetch(a.data)).blob()});
+  await new Promise((ok,no)=>{const t=db.transaction(['items','audio'],'readwrite'),i=t.objectStore('items'),a=t.objectStore('audio');if(m==1){i.clear();a.clear()}j.items.forEach(x=>i.put(x));au.forEach(x=>a.put(x));t.oncomplete=ok;t.onerror=t.onabort=()=>no(t.error)});
+  D=await all();S.sp='';toast('تم استيراد النسخة ✓','success');render()}catch(e){toast('فشل الاستيراد، لم تتغير بياناتك','error')}}
+/* الأحداث */
+const el=()=>acc+(S.rec&&!pzd?Date.now()-t0:0),canPz=()=>window.MediaRecorder&&MediaRecorder.prototype.pause;
+function rbar(){const r=$('#rb');r.style.display=S.rec?'flex':'none';if(S.rec)r.innerHTML=`<span class="dot"></span><b class="rt">${fm(el()/1000)}</b>${pzd?'<small>متوقف</small>':''}<span class="grow"></span>${canPz()?`<button class="btn sm" data-a="pz">${pzd?'▶ استكمال':'⏸ مؤقت'}</button>`:''}<button class="btn sm d" data-a="stop">■ حفظ</button>`}
+const recSheet=()=>mo(`<div id="recs" style="text-align:center"><div class="rt" style="font-size:2.6rem;font-weight:800">${fm(el()/1000)}</div><div class="bd">${pzd?'متوقف مؤقتاً':'<span class="dot"></span> جارٍ التسجيل…'}</div><div class="row" style="margin-top:10px">${canPz()?`<button class="btn grow" data-a="pz">${pzd?'▶ استكمال':'⏸ إيقاف مؤقت'}</button>`:''}<button class="btn d grow" data-a="stop">■ إيقاف وحفظ</button></div><button class="btn blk" data-a="cm" style="margin-top:8px">إخفاء (يستمر التسجيل)</button></div>`);
+async function finish(blob,dur){if(!blob.size){pend=null;return toast('لم يُلتقط أي صوت. تأكد من الميكروفون وأعد المحاولة.','error')}pend={blob,dur};
+ const id=uid(),o={id,type:'audio',title:'تسجيل '+fd(Date.now())+' '+new Date().toLocaleTimeString('ar',{hour:'2-digit',minute:'2-digit'}),body:'',created:Date.now(),arch:0,sp:S.sp,pj:'',dur};
+ try{await put({id,blob,mime:blob.type},'audio');if(!await sv(o,1))throw 0;pend=null;if(S.v=='audio'||S.v=='home')render();
+  mo(`<b>تم حفظ التسجيل ✓</b><div class="fg" style="margin-top:12px"><label>اسم التسجيل</label><input id="f_t" value="${esc(o.title)}"></div><div class="fg"><label>ربط بمشروع (اختياري)</label><select id="f_p">${[['','بدون مشروع'],...D.filter(p=>p.type=='project'&&!p.arch).map(p=>[p.id,p.title])].map(([v,l])=>`<option value="${esc(v)}">${esc(l)}</option>`).join('')}</select></div><button class="btn p blk" data-a="rn" data-id="${id}">حفظ الاسم</button><button class="btn blk" data-a="cm" style="margin-top:8px">تم</button>`)}
+ catch(e){try{await rm(id,'audio')}catch(x){}toast('فشل حفظ التسجيل','error');mo('<b>تعذر حفظ التسجيل</b><p class="bd">لم يُحفظ بعد، وما زال في ذاكرة التطبيق. لا تغلق التطبيق، وأعد المحاولة.</p><button class="btn p blk" data-a="retry">إعادة المحاولة</button>')}}
+const MSG=['خذ نفساً وابدأ بهدوء 🌿','تذكير لطيف منك لنفسك ✨','حان وقتها، وأنت قدّها 💪','خطوة صغيرة الآن تريحك لاحقاً 🍃'];
+const fdt=f=>new Date(f).toLocaleString('ar',{weekday:'short',day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'});
+function fires(x,n=1,from=Date.now()){const [h,mi]=(x.t||'09:00').split(':').map(Number),st=new Date((x.d||td())+'T00:00:00'),out=[];
+ for(let i=0;i<800&&out.length<n;i++){if(!x.r&&i>0)break;const c=new Date(st.getFullYear(),st.getMonth(),st.getDate()+i,h,mi);if(c<=from)continue;const dw=c.getDay();let ok;
+  if(!x.r)ok=1;else if(x.r=='month')ok=c.getDate()==Math.min(st.getDate(),new Date(c.getFullYear(),c.getMonth()+1,0).getDate());else ok=(x.wd&&x.wd.length)?x.wd.includes(dw):(x.r=='week'?dw==st.getDay():1);
+  if(ok)out.push(c.getTime())}return out}
+const okTk=x=>!x.tk||(t=>t&&t.st!='done'&&!t.arch)(D.find(y=>y.id==x.tk));
+const upc=()=>D.filter(x=>x.type=='reminder'&&x.on!=0&&okTk(x)).map(x=>({x,f:fires(x,1)[0]})).filter(o=>o.f).sort((a,b)=>a.f-b.f);
+function syncRem(){const l=D.filter(x=>x.type=='reminder'&&x.on!=0&&okTk(x)).map(x=>({id:x.id,title:x.title,text:MSG[x.id.length%MSG.length],times:fires(x,40)})).filter(r=>r.times.length),j=JSON.stringify(l);
+ if(j!==lastJ){lastJ=j;try{if(window.RattibAndroid)RattibAndroid.sync(j)}catch(e){}}}
+function tick(){if(window.RattibAndroid)return;const now=Date.now();D.filter(x=>x.type=='reminder'&&x.on!=0&&okTk(x)).forEach(x=>{const f=fires(x,1,lastT)[0];if(f&&f<=now){const m=MSG[now%MSG.length];if('Notification' in window&&Notification.permission=='granted')ntf('🌿 '+x.title,m);else{mo(`<b>⏰ ${esc(x.title)}</b><p class="bd">${m}</p><button class="btn p blk" data-a="cm">تمام</button>`);try{navigator.vibrate&&navigator.vibrate([200,100,200])}catch(e){}}}});lastT=now}
+window.openFromNative=id=>{const x=D.find(y=>y.id==id),t=x&&x.tk&&D.find(y=>y.id==x.tk);if(t)H.edit({id:t.id});else H.go({v:'rem'})};
+async function setTaskRem(o,t,r){const id='rm_'+o.id,ex=D.find(y=>y.id==id);if(!t){if(ex){await rm(id);D=D.filter(y=>y.id!=id)}return}const d=o.due||td();await sv({...(ex||{id,type:'reminder',created:Date.now(),arch:0,on:1}),title:o.title,tk:o.id,t,r,d,wd:r=='week'?[new Date(d+'T12:00:00').getDay()]:[]},1)}
+const subs=x=>{if(x.type!='task'||x.par)return '';const c=D.filter(y=>y.par==x.id&&!y.arch);return c.length?`<div class="mt">☰ ${c.filter(y=>y.st=='done').length}/${c.length} مهام فرعية</div>${c.map(y=>`<div class="row" style="align-items:center;margin-top:6px"><button class="chk ${y.st=='done'?'on':''}" data-a="tg" data-id="${y.id}">${y.st=='done'?'✓':''}</button><span class="bd ${y.st=='done'?'tt dn':''}" style="margin:0">${esc(y.title)}</span></div>`).join('')}`:''};
+V.rem=()=>{const a=window.RattibAndroid,l=D.filter(x=>x.type=='reminder'&&(!x.tk||D.some(y=>y.id==x.tk))).map(x=>({x,f:fires(x,1)[0]})).sort((a,b)=>(a.f||9e15)-(b.f||9e15));
+ return `<div class="card"><div class="bd">${a?'✓ إشعارات أندرويد الأصلية: تصل حتى والتطبيق مغلق.':'في المتصفح تعمل التنبيهات أثناء فتح الصفحة فقط. للإشعارات والتطبيق مغلق استخدم نسخة الأندرويد.'}</div>${a?'<button class="btn sm" data-a="exact">ضبط دقة المواعيد</button>':(/; wv\)/.test(navigator.userAgent)?'<div class="bd"><b>تنبيه:</b> هذا التطبيق (WebView) لا يرسل إشعارات أندرويد. ستظهر لك التذكيرات داخل التطبيق فقط وهو مفتوح.</div>':('Notification' in window&&Notification.permission!='granted'?'<button class="btn sm" data-a="perm">السماح بإشعارات المتصفح</button>':''))}<div class="mt">يتوقف تذكير المهمة تلقائياً عند إنجاز المهمة أو أرشفتها، ويُحذف مع حذفها.</div></div><button class="btn p blk" data-a="radd">+ تذكير عام</button><div style="height:10px"></div>${l.map(({x,f})=>`<div class="ic"><div class="tt">⏰ ${esc(x.title)}</div><div class="mt"><span class="bg ${x.on==0?'':'a'}">${x.on==0?'متوقف':f?fdt(f):'فات موعده'}</span>${x.r?`<span class="bg">↻ ${{day:'يومي',week:'أسبوعي',month:'شهري'}[x.r]}</span>`:''}${x.tk?'<span class="bg">مرتبط بمهمة</span>':''}</div><div class="ac"><button class="btn sm" data-a="rtg" data-id="${x.id}">${x.on==0?'تفعيل':'إيقاف'}</button><button class="btn sm" data-a="redit" data-id="${x.id}">تعديل</button><button class="btn sm d" data-a="rdel" data-id="${x.id}">حذف</button></div></div>`).join('')||'<div class="emp">لا تذكيرات بعد</div>'}`};
+function remForm(x){FR=x;mo(`<b>${x.created?'تعديل التذكير':'تذكير جديد'}</b><div class="fg" style="margin-top:12px"><label>ذكّرني بـ</label><input id="r_ti" value="${esc(x.title)}"></div><div class="row"><div class="fg grow"><label>التاريخ</label><input type="date" id="r_d" value="${esc(x.d)}"></div><div class="fg grow"><label>الوقت</label><input type="time" id="r_t" value="${esc(x.t)}"></div></div><div class="fg"><label>التكرار</label><select id="r_r">${[['','مرة واحدة'],['day','يومياً'],['week','أسبوعياً'],['month','شهرياً']].map(([v,l])=>`<option value="${v}" ${v==(x.r||'')?'selected':''}>${l}</option>`).join('')}</select></div><label class="bd">أيام محددة (اختياري)</label><div class="chips" id="r_wd">${'أحد,اثنين,ثلاثاء,أربعاء,خميس,جمعة,سبت'.split(',').map((n,i)=>`<button class="chip ${(x.wd||[]).includes(i)?'on':''}" data-a="wdt">${n}</button>`).join('')}</div><button class="btn p blk" data-a="rsv" style="margin-top:12px">حفظ التذكير</button>`)}
+function ntf(t,b){const o={body:b,dir:'rtl',lang:'ar',icon:'icon-192.png'};try{if(navigator.serviceWorker&&navigator.serviceWorker.controller)return navigator.serviceWorker.ready.then(r=>r.showNotification(t,o))}catch(e){}try{new Notification(t,o)}catch(e){toast('⏰ '+t)}}
+const micHelp=m=>mo(`<b>تعذر التسجيل المباشر</b><p class="bd">${esc(m)}</p><p class="bd" style="font-size:.75rem;direction:ltr;text-align:left">secure=${window.isSecureContext} · ${location.protocol} · ${esc(lastErr||'-')}</p><label class="btn p blk">🎙 سجّل بتطبيق التسجيل في جهازك<input type="file" accept="audio/*" capture class="af" style="display:none"></label><label class="btn blk" style="margin-top:8px">📁 اختيار ملف صوتي من الجهاز<input type="file" accept="audio/*" class="af" style="display:none"></label><button class="btn blk" data-a="cm" style="margin-top:8px">إغلاق</button>`);
+document.addEventListener('change',e=>{const f=e.target.classList&&e.target.classList.contains('af')&&e.target.files[0];if(!f)return;e.target.value='';const a=new Audio(),u=URL.createObjectURL(f);let n=0;const go=d=>{if(n++)return;URL.revokeObjectURL(u);cm();finish(f,Math.round(isFinite(d)?d:0))};a.onloadedmetadata=()=>go(a.duration);a.onerror=()=>go(0);setTimeout(()=>go(0),2500);a.src=u});
+const H={cm,
+ go:d=>{if(S.v!=d.v)S.stk=[...S.stk,S.v].slice(-20);S.v=d.v;S.q='';S.f={};render();scrollTo(0,0)},
+ fl:d=>{S.f[d.k]=d.v;render()},
+ ar:d=>{S.ar=+d.v;render()},
+ back:()=>{S.v=S.stk.pop()||'home';S.q='';S.f={};render();scrollTo(0,0)},
+ open:d=>{S.stk.push(S.v);S.pid=d.id;S.v='pd';S.q='';render();scrollTo(0,0)},
+ edit:d=>openForm(D.find(x=>x.id==d.id)),
+ add:d=>{const t=d.t;if(t=='task'&&!d.full)return H.qk(d);openForm({id:uid(),type:t,created:Date.now(),arch:0,title:'',body:'',sp:t=='space'?undefined:S.sp,pj:d.pj||'',...NW[t]},1)},
+ save:async()=>{const o={...FO};F[o.type].forEach(k=>o[k]=$('#f_'+k).value.trim());const rt=o.rt,rr=o.rr;delete o.rt;delete o.rr;
+  if(!(['task','project','space'].includes(o.type)?o.title:(o.title||o.body)))return toast('اكتب شيئاً أولاً','error');
+  if(await sv(o)){if(o.type=='task'&&o.fq&&o.st=='done'&&FO.st!='done')await nextRec(o);if(o.type=='task')await setTaskRem(o,rt,rr);cm();render()}},
+ qi:()=>{mo(`<b>فضّي اللي ببالك</b><textarea id="qb" rows="6" placeholder="اكتب أي شيء…" style="margin:12px 0"></textarea><div class="row"><button class="btn p grow" data-a="qs">حفظ كفكرة</button><button class="btn grow" data-a="qt">تحويل إلى مهمة (اليوم)</button></div><div class="row" style="margin-top:8px"><button class="btn grow" data-a="qn">حفظ كملاحظة</button><button class="btn grow" data-a="cm">إغلاق</button></div>`);setTimeout(()=>$('#qb').focus(),60)},
+ qs:async()=>{const b=$('#qb').value.trim();if(!b)return toast('اكتب فكرة أولاً','error');if(await sv({id:uid(),type:'idea',title:'',body:b,created:Date.now(),arch:0,sp:S.sp,pj:''})){cm();render()}},
+ tg:async d=>{const x=D.find(y=>y.id==d.id);if(x.st!='done'&&x.fq)await nextRec(x);return chg(d.id,{st:x.st=='done'?'new':'done'})},
+ doing:d=>chg(d.id,{st:'doing'}),
+ toTask:d=>{const x=D.find(y=>y.id==d.id);return chg(d.id,{type:'task',st:'new',fq:'',due:'',title:x.title||(x.body||'').slice(0,60)},'تحولت الفكرة إلى مهمة')},
+ qk:d=>{S.qp={par:d.par||'',pj:d.pj||''};S.qlast='';mo(`<b>${d.par?'مهمة فرعية':'شو بدك تعمل؟'}</b><input id="qk" placeholder="مثلاً: راجع محاضرة اليوم" style="margin:12px 0" autocomplete="off"><div id="qkl"></div><div class="row"><button class="btn p grow" data-a="qka">إضافة</button><button class="btn grow" data-a="cm">تم</button></div>`);$('#md').onkeydown=e=>{if(e.key=='Enter'&&e.target.id=='qk'){e.preventDefault();H.qka()}};setTimeout(()=>$('#qk')&&$('#qk').focus(),60)},
+ qka:async()=>{const i=$('#qk'),t=i&&i.value.trim();if(!t)return toast('اكتب المهمة أولاً','error');const p=S.qp.par&&D.find(y=>y.id==S.qp.par),o={id:uid(),type:'task',title:t,body:'',created:Date.now(),arch:0,sp:S.sp,pj:p?p.pj||'':S.qp.pj,st:'new',fq:'',due:'',pr:'',par:S.qp.par||''};
+  if(await sv(o,1)){S.qlast=o.id;i.value='';i.focus();$('#qkl').insertAdjacentHTML('beforeend',`<div class="bd">✓ ${esc(t)}</div>`);$('#qks')||$('#qkl').insertAdjacentHTML('afterend','<div id="qks" class="chips"><button class="chip" data-a="qkd" data-v="0">آخر مهمة: اليوم</button><button class="chip" data-a="qkd" data-v="1">غداً</button></div>');render()}},
+ qkd:d=>chg(S.qlast,{due:addD(td(),+d.v)},'تم تحديد الموعد'),
+ sub:d=>H.qk({par:d.id}),
+ hqt:async()=>{const i=$('#hq'),t=i.value.trim();if(!t)return toast('اكتب شيئاً أولاً','error');if(await sv({id:uid(),type:'task',title:t,body:'',created:Date.now(),arch:0,sp:S.sp,pj:'',st:'new',fq:'',due:td(),pr:''},1)){toast('أُضيفت المهمة لليوم ✓','success');render()}},
+ hqi:async()=>{const i=$('#hq'),t=i.value.trim();if(!t)return toast('اكتب شيئاً أولاً','error');if(await sv({id:uid(),type:'idea',title:'',body:t,created:Date.now(),arch:0,sp:S.sp,pj:''},1)){toast('حُفظت الفكرة ✓','success');render()}},
+ radd:()=>remForm({title:'',d:td(),t:'20:00',r:'',wd:[]}),
+ redit:d=>remForm(D.find(y=>y.id==d.id)),
+ wdt:(d,b)=>0,
+ rsv:async()=>{const ti=$('#r_ti').value.trim(),t=$('#r_t').value,d=$('#r_d').value;if(!ti||!t||!d)return toast('أكمل العنوان والتاريخ والوقت','error');const wd=[...document.querySelectorAll('#r_wd .chip')].map((c,i)=>c.classList.contains('on')?i:-1).filter(i=>i>=0);
+  if(await sv({...FR,type:'reminder',id:FR.id||uid(),created:FR.created||Date.now(),arch:0,on:1,tk:FR.tk||'',title:ti,d,t,r:$('#r_r').value,wd})){cm();render()}},
+ rtg:d=>chg(d.id,{on:D.find(y=>y.id==d.id).on==0?1:0}),
+ rdel:async d=>{if(await dlg('حذف هذا التذكير؟',['حذف'],1)!==0)return;try{await rm(d.id);D=D.filter(y=>y.id!=d.id);render()}catch(e){toast('فشل الحذف','error')}},
+ perm:async()=>{try{await Notification.requestPermission()}catch(e){}render()},
+ exact:()=>{try{RattibAndroid.exact()}catch(e){}},
+ mn:d=>{const x=D.find(y=>y.id==d.id);if(!x)return;mo(`<div class="tt" style="margin-bottom:6px">${esc(x.title||(x.body||'').slice(0,40)||TY[x.type])}</div>${acts(x).map(([a,l,c])=>`<button class="btn blk ${c||''}" style="margin-top:8px" data-a="sa" data-b="${a}" data-id="${x.id}">${l}</button>`).join('')}<button class="btn blk" style="margin-top:8px" data-a="cm">إغلاق</button>`)},
+ sa:d=>{cm();return H[d.b](d)},
+ dd:d=>{$('#f_due').value=d.v===''?'':addD(td(),+d.v)},
+ toNote:d=>chg(d.id,{type:'note'},'تحولت الفكرة إلى ملاحظة'),
+ toProj:d=>{const x=D.find(y=>y.id==d.id);return chg(d.id,{type:'project',ps:'active',goals:'',title:x.title||(x.body||'').slice(0,60)},'تحولت الفكرة إلى مشروع')},
+ later:d=>{const x=D.find(y=>y.id==d.id);return chg(d.id,{later:x.later?0:1},x.later?'أُعيدت الفكرة':'أُجّلت الفكرة')},
+ snz:d=>{const x=D.find(y=>y.id==d.id);return chg(d.id,{due:addD(x.due&&x.due>td()?x.due:td(),1)},'أُجّلت المهمة')},
+ snw:d=>{const x=D.find(y=>y.id==d.id);return chg(d.id,{due:addD(x.due&&x.due>td()?x.due:td(),7)},'أُجّلت المهمة أسبوعاً')},
+ qn:async()=>{const b=$('#qb').value.trim();if(!b)return toast('اكتب ملاحظتك أولاً','error');if(await sv({id:uid(),type:'note',title:'',body:b,created:Date.now(),arch:0,sp:S.sp,pj:''})){cm();render()}},
+ qt:async()=>{const b=$('#qb').value.trim();if(!b)return toast('اكتب المهمة أولاً','error');if(await sv({id:uid(),type:'task',title:b.slice(0,120),body:b.length>120?b:'',created:Date.now(),arch:0,sp:S.sp,pj:'',st:'new',fq:'',due:td(),pr:''})){cm();render()}},
+ arch:d=>{if(S.pid==d.id&&S.v=='pd')S.v='project';return chg(d.id,{arch:1},'تمت الأرشفة. تجدها في «بحث وأرشيف»')},
+ rs:d=>chg(d.id,{arch:0},'تمت الاستعادة'),
+ del:async d=>{const x=D.find(y=>y.id==d.id);if(await dlg(`حذف «${x.title||(x.body||'').slice(0,30)||TY[x.type]}» نهائياً؟ لا يمكن التراجع.`+(x.type=='project'?' ستبقى مهامه وملاحظاته لكن دون ربط بالمشروع.':''),['حذف نهائياً'],1)!==0)return;
+  try{if(x.type=='project')for(const y of D.filter(y=>y.pj==x.id)){await put({...y,pj:''});y.pj=''}
+   await rm(x.id);if(x.type=='audio')await rm(x.id,'audio');if(x.type=='task'){for(const y of D.filter(y=>y.par==x.id))await rm(y.id);await rm('rm_'+x.id)}D=D.filter(y=>y.id!=x.id&&y.par!=x.id&&y.id!='rm_'+x.id);if(S.pid==x.id&&S.v=='pd')S.v='project';toast('تم الحذف','success');render()}catch(e){toast('فشل الحذف','error')}},
+ dsp:async d=>{const s=D.find(y=>y.id==d.id),k=D.filter(y=>y.sp==s.id);if(await dlg(`سيتم حذف المساحة «${s.title}». فيها ${k.length} عنصر؛ لن تُحذف العناصر بل تنتقل إلى «بدون مساحة».`,['حذف المساحة'],1)!==0)return;
+  try{for(const y of k){await put({...y,sp:''});y.sp=''}await rm(s.id);D=D.filter(y=>y.id!=s.id);if(S.sp==s.id)S.sp='';toast('تم حذف المساحة','success');render()}catch(e){toast('فشل الحذف','error')}},
+ th:()=>{const e=document.documentElement,n=e.dataset.theme=='dark'?'light':'dark';e.dataset.theme=n;try{localStorage.setItem('rt',n)}catch(x){}},
+ col:d=>{S.col=d.v;render()},undo:()=>{S.st.pop();pc()},clr:()=>{S.st=[];S.bg=null;pc()},
+ sd:async()=>{const c=$('#cv');if(!S.st.length&&!S.bg)return toast('الرسم فارغ','error');if(await sv({id:uid(),type:'draw',title:'رسمة '+fd(Date.now()),body:'',created:Date.now(),arch:0,sp:S.sp,img:c.toDataURL('image/png')}))pl()},
+ view:d=>{const x=D.find(y=>y.id==d.id);mo(`<img src="${esc(x.img)}" style="width:100%;background:#fff;border-radius:10px"><div class="ac" style="border:0"><button class="btn p" data-a="cont" data-id="${x.id}">متابعة الرسم عليها</button><button class="btn" data-a="cm">إغلاق</button></div>`)},
+ cont:d=>{const x=D.find(y=>y.id==d.id),i=new Image();i.onload=()=>{S.bg=i;S.st=[];cm();S.v='draw';render()};i.src=x.img},
+ rec:async()=>{if(S.rec)return recSheet();
+  if(!(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia&&window.MediaRecorder))return micHelp((window.isSecureContext===false?'المتصفح يمنع الميكروفون في الصفحات غير الآمنة (مثل ملف مفتوح من مدير الملفات). استخدم مشروع الأندرويد المرفق أو رابط https.':'التسجيل الصوتي غير مدعوم في هذه البيئة.'),'error');
+  let st;try{st=await navigator.mediaDevices.getUserMedia({audio:true})}catch(e){lastErr=e.name+': '+(e.message||'');return micHelp(e.name=='NotAllowedError'||e.name=='SecurityError'?'رُفض الميكروفون. إن كان الإذن ممنوحاً فعلاً في إعدادات أندرويد فالسبب غالباً أن تطبيق التحويل لا يمرّره لـWebView، وهذا لا يُحل من ملف HTML بل يحتاج مشروع الأندرويد المرفق.':e.name=='NotFoundError'?'لا يوجد ميكروفون في هذا الجهاز.':'تعذر بدء التسجيل ('+e.name+')','error')}
+  try{const mt=['audio/webm;codecs=opus','audio/webm','audio/mp4','audio/ogg;codecs=opus'].find(m=>MediaRecorder.isTypeSupported&&MediaRecorder.isTypeSupported(m));rec=mt?new MediaRecorder(st,{mimeType:mt}):new MediaRecorder(st)}catch(e){st.getTracks().forEach(t=>t.stop());return toast('تعذر تهيئة المسجّل في هذه البيئة','error')}
+  chunks=[];rec.ondataavailable=e=>{if(e.data&&e.data.size)chunks.push(e.data)};rec.onerror=()=>toast('حدث خطأ أثناء التسجيل','error');
+  rec.onstop=()=>{st.getTracks().forEach(t=>t.stop());clearInterval(tm);const dur=Math.round(el()/1000);S.rec=0;pzd=0;rbar();if($('#mb.o #recs'))cm();finish(new Blob(chunks,{type:rec.mimeType||'audio/webm'}),dur)};
+  acc=0;pzd=0;t0=Date.now();S.rec=1;rec.start(1000);tm=setInterval(()=>{document.querySelectorAll('.rt').forEach(e=>e.textContent=fm(el()/1000))},500);rbar();if(S.v=='home'||S.v=='audio')render();recSheet()},
+ pz:()=>{if(!rec||rec.state=='inactive')return;if(pzd){rec.resume();t0=Date.now();pzd=0}else{rec.pause();acc+=Date.now()-t0;pzd=1}rbar();if($('#mb.o #recs'))recSheet()},
+ stop:()=>{if(rec&&rec.state!='inactive')rec.stop()},
+ retry:()=>pend&&finish(pend.blob,pend.dur),
+ rn:async d=>{const t=$('#f_t').value.trim();if(!t)return toast('اكتب اسماً للتسجيل','error');if(await chg(d.id,{title:t,pj:$('#f_p').value},'تم تحديث التسجيل'))cm()},
+ play:async d=>{try{const r=await get(d.id,'audio');if(!r)return toast('ملف الصوت غير موجود','error');const e=$('#au_'+d.id);e.innerHTML='<audio controls></audio>';const a=e.firstChild;a.src=URL.createObjectURL(r.blob);a.play().catch(()=>{})}catch(e){toast('تعذر تشغيل التسجيل','error')}},
+ exp:async()=>{try{const j=await mk(),a=document.createElement('a');a.href=URL.createObjectURL(new Blob([j],{type:'application/json'}));a.download='rattib-backup-'+td()+'.json';document.body.append(a);a.click();a.remove();toast('بدأ التنزيل. إن لم يظهر الملف استخدم «نسخ كنص».','success')}catch(e){toast('فشل إنشاء النسخة','error')}},
+ cp:async()=>{try{const j=await mk();try{await navigator.clipboard.writeText(j);toast('تم نسخ النسخة. الصقها في مكان آمن.','success')}catch(e){mo(`<b>انسخ النص بالكامل</b><textarea id="ct" rows="10" readonly style="margin:10px 0">${esc(j)}</textarea><button class="btn blk" data-a="cm">إغلاق</button>`);$('#ct').select()}}catch(e){toast('فشل إنشاء النسخة','error')}},
+ impt:()=>imp($('#pt').value)};
+let busy=0;const LK=['rsv','qka','hqt','hqi','rec','rn','retry','tg','snz','snw','save','qs','qt','qn','sd','doing','toTask','toNote','toProj','later','arch','rs','dd'];
+document.addEventListener('click',e=>{const c=e.target.closest('[data-a=wdt]');if(c)c.classList.toggle('on')});
+document.addEventListener('click',async e=>{const b=e.target.closest('[data-a]'),a=b&&b.dataset.a;if(!H[a])return;const lk=LK.includes(a);if(lk&&busy)return;if(lk)busy=1;try{await H[a](b.dataset)}catch(x){toast('حدث خطأ غير متوقع. أعد المحاولة.','error')}finally{if(lk)busy=0}});
+document.addEventListener('focusin',e=>{if(/INPUT|TEXTAREA|SELECT/.test(e.target.tagName))setTimeout(()=>e.target.scrollIntoView({block:'center',behavior:'smooth'}),300)});
+try{history.pushState(1,'');addEventListener('popstate',()=>{history.pushState(1,'');if($('#mb').classList.contains('o'))cm();else if(S.v!='home')H.back()})}catch(e){}
+$('#sp').onchange=e=>{S.sp=e.target.value;render()};
+(async()=>{let t;try{t=localStorage.getItem('rt')}catch(e){}document.documentElement.dataset.theme=t||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
+ try{await new Promise((ok,no)=>{const r=indexedDB.open('rattib',1);r.onupgradeneeded=()=>{r.result.createObjectStore('items',{keyPath:'id'});r.result.createObjectStore('audio',{keyPath:'id'})};r.onsuccess=()=>{db=r.result;ok()};r.onerror=()=>no(r.error)});D=await all();if(navigator.storage&&navigator.storage.persist)navigator.storage.persist().catch(()=>{})}
+ catch(e){toast('تعذر فتح التخزين المحلي. لن تُحفظ بياناتك في هذه البيئة.','error')}
+ render();try{if(window.RattibAndroid){const p=RattibAndroid.pending();if(p)openFromNative(p)}}catch(e){}})();
+setInterval(tick,20000);if('serviceWorker' in navigator&&/^https?:/.test(location.protocol))navigator.serviceWorker.register('sw.js').catch(()=>{});document.addEventListener('visibilitychange',()=>{if(!document.hidden)tick()});
+</script>
+</body>
+</html>
