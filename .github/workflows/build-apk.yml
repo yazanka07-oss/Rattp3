@@ -1,199 +1,136 @@
-name: Build Rattib APK
-
-on:
-  push:
-    branches: [main, master]
-  workflow_dispatch:
-
-permissions:
-  contents: read
-
+name: Build APK
+on: workflow_dispatch
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with: {distribution: temurin, java-version: 17}
+      - uses: android-actions/setup-android@v3
+      - uses: gradle/actions/setup-gradle@v4
+        with: {gradle-version: '8.5'}
+      - name: Fixed signing key (lets updates install over old versions)
+        continue-on-error: true
+        run: |
+          mkdir -p ~/.android
+          echo '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' | base64 -d > /tmp/k.p12
+          rm -f ~/.android/debug.keystore
+          keytool -importkeystore -srckeystore /tmp/k.p12 -srcstoretype PKCS12 -srcstorepass android -destkeystore ~/.android/debug.keystore -deststoretype JKS -deststorepass android -destkeypass android -srcalias androiddebugkey -destalias androiddebugkey -noprompt
 
-      - name: Set up Java 17
-        uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: '17'
-
-      - name: Set up Android SDK
-        uses: android-actions/setup-android@v4
-
-      - name: Install build tools
-        run: sdkmanager "platforms;android-35" "build-tools;35.0.0"
-
-      - name: Set up Gradle
-        uses: gradle/actions/setup-gradle@v4
-        with:
-          gradle-version: 8.7
-
-      - name: Create Android project
+      - name: Create Android project files
         run: |
           mkdir -p app/src/main/java/com/rattib/app app/src/main/assets
-          test -f rattib.html || { echo 'ERROR: rattib.html is missing from repository root'; exit 1; }
+          cat > settings.gradle <<'RATTIB_EOF'
+          pluginManagement{repositories{google();mavenCentral();gradlePluginPortal()}}
+          dependencyResolutionManagement{repositories{google();mavenCentral()}}
+          rootProject.name='Rattib'
+          include ':app'
+          RATTIB_EOF
+          cat > build.gradle <<'RATTIB_EOF'
+          plugins{id 'com.android.application' version '8.2.2' apply false}
+          RATTIB_EOF
+          cat > gradle.properties <<'RATTIB_EOF'
+          android.useAndroidX=true
+          org.gradle.jvmargs=-Xmx2g
+          RATTIB_EOF
+          cat > app/build.gradle <<'RATTIB_EOF'
+          plugins{id 'com.android.application'}
+          android{namespace 'com.rattib.app';compileSdk 34
+           defaultConfig{applicationId 'com.rattib.app';minSdk 24;targetSdk 34;versionCode 1;versionName '1.0'}
+           compileOptions{sourceCompatibility JavaVersion.VERSION_1_8;targetCompatibility JavaVersion.VERSION_1_8}}
+          dependencies{implementation 'androidx.webkit:webkit:1.8.0'}
+          RATTIB_EOF
+          cat > app/src/main/AndroidManifest.xml <<'RATTIB_EOF'
+          <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+            <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+            <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
+            <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+            <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+            <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS"/>
+            <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
+            <application android:label="رتّب" android:supportsRtl="true" android:theme="@android:style/Theme.DeviceDefault.Light.NoActionBar">
+              <activity android:name=".MainActivity" android:exported="true" android:launchMode="singleTop" android:windowSoftInputMode="adjustResize">
+                <intent-filter><action android:name="android.intent.action.MAIN"/><category android:name="android.intent.category.LAUNCHER"/></intent-filter>
+              </activity>
+              <receiver android:name=".Reminders$AlarmReceiver" android:exported="false"/>
+              <receiver android:name=".Reminders$BootReceiver" android:exported="true">
+                <intent-filter><action android:name="android.intent.action.BOOT_COMPLETED"/><action android:name="android.intent.action.TIMEZONE_CHANGED"/></intent-filter>
+              </receiver>
+            </application>
+          </manifest>
+          RATTIB_EOF
+          cat > app/src/main/java/com/rattib/app/MainActivity.java <<'RATTIB_EOF'
+          package com.rattib.app;
+          import android.Manifest;import android.app.*;import android.content.*;import android.content.pm.PackageManager;import android.net.Uri;import android.os.*;import android.webkit.*;
+          import androidx.webkit.WebViewAssetLoader;
+          public class MainActivity extends Activity {
+            WebView wv; PermissionRequest pendingReq; String pendingOpen;
+            @Override protected void onCreate(Bundle b){super.onCreate(b);Reminders.channel(this);
+              java.util.ArrayList<String> need=new java.util.ArrayList<>();
+              if(Build.VERSION.SDK_INT>=33&&checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS)!=PackageManager.PERMISSION_GRANTED)need.add(Manifest.permission.POST_NOTIFICATIONS);
+              if(checkSelfPermission(Manifest.permission.RECORD_AUDIO)!=PackageManager.PERMISSION_GRANTED)need.add(Manifest.permission.RECORD_AUDIO);
+              if(!need.isEmpty())requestPermissions(need.toArray(new String[0]),1);
+              wv=new WebView(this);setContentView(wv);WebSettings s=wv.getSettings();s.setJavaScriptEnabled(true);s.setDomStorageEnabled(true);s.setMediaPlaybackRequiresUserGesture(false);
+              final WebViewAssetLoader al=new WebViewAssetLoader.Builder().addPathHandler("/assets/",new WebViewAssetLoader.AssetsPathHandler(this)).build();
+              wv.setWebViewClient(new WebViewClient(){@Override public WebResourceResponse shouldInterceptRequest(WebView v,WebResourceRequest r){return al.shouldInterceptRequest(r.getUrl());}});
+              wv.setWebChromeClient(new WebChromeClient(){@Override public void onPermissionRequest(final PermissionRequest r){runOnUiThread(()->{
+                if(checkSelfPermission(Manifest.permission.RECORD_AUDIO)==PackageManager.PERMISSION_GRANTED)r.grant(r.getResources());else{pendingReq=r;requestPermissions(new String[]{Manifest.permission.RECORD_AUDIO},2);}});}});
+              wv.addJavascriptInterface(new Object(){
+                @JavascriptInterface public void sync(String j){Reminders.save(MainActivity.this,j);}
+                @JavascriptInterface public String pending(){String p=pendingOpen;pendingOpen=null;return p==null?"":p;}
+                @JavascriptInterface public String status(){try{org.json.JSONObject o=new org.json.JSONObject();o.put("notif",getSystemService(NotificationManager.class).areNotificationsEnabled());o.put("exact",Build.VERSION.SDK_INT<31||getSystemService(AlarmManager.class).canScheduleExactAlarms());o.put("battery",getSystemService(PowerManager.class).isIgnoringBatteryOptimizations(getPackageName()));o.put("mic",checkSelfPermission(Manifest.permission.RECORD_AUDIO)==PackageManager.PERMISSION_GRANTED);o.put("scheduled",new org.json.JSONArray(Reminders.sp(MainActivity.this).getString("ids","[]")).length());return o.toString();}catch(Exception e){return "{}";}}
+                @JavascriptInterface public void testNow(){Reminders.notifyNow(MainActivity.this,"test","اختبار الإشعار","إذا شفت هذا الإشعار فالإشعارات سليمة 🌿");}
+                @JavascriptInterface public void testAlarm(){Reminders.testAlarm(MainActivity.this);}
+                @JavascriptInterface public void battery(){runOnUiThread(()->{try{startActivity(new Intent(android.provider.Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS,Uri.parse("package:"+getPackageName())));}catch(Exception e){startActivity(new Intent(android.provider.Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS));}});}
+                @JavascriptInterface public void settings(){runOnUiThread(()->startActivity(new Intent(android.provider.Settings.ACTION_APP_NOTIFICATION_SETTINGS).putExtra(android.provider.Settings.EXTRA_APP_PACKAGE,getPackageName())));}
+                @JavascriptInterface public void exact(){if(Build.VERSION.SDK_INT>=31&&!getSystemService(AlarmManager.class).canScheduleExactAlarms())startActivity(new Intent(android.provider.Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM,Uri.parse("package:"+getPackageName())));}
+              },"RattibAndroid");
+              pendingOpen=getIntent().getStringExtra("open");
+              wv.loadUrl("https://appassets.androidplatform.net/assets/rattib.html");}
+            @Override protected void onNewIntent(Intent i){super.onNewIntent(i);String o=i.getStringExtra("open");if(o!=null)wv.evaluateJavascript("window.openFromNative&&openFromNative("+org.json.JSONObject.quote(o)+")",null);}
+            @Override public void onRequestPermissionsResult(int c,String[] p,int[] g){if(c==2&&pendingReq!=null){if(g.length>0&&g[0]==PackageManager.PERMISSION_GRANTED)pendingReq.grant(pendingReq.getResources());else pendingReq.deny();pendingReq=null;}}
+            @Override public void onBackPressed(){wv.evaluateJavascript("(function(){return S.v=='home'&&!$('#mb').classList.contains('o')})()",v->{if("true".equals(v))finish();else wv.evaluateJavascript("history.back()",null);});}
+          }
+          RATTIB_EOF
+          cat > app/src/main/java/com/rattib/app/Reminders.java <<'RATTIB_EOF'
+          package com.rattib.app;
+          import android.app.*;import android.content.*;import android.os.Build;import org.json.*;
+          public class Reminders {
+            static final String CH="rattib";
+            static void channel(Context c){if(Build.VERSION.SDK_INT>=26){NotificationChannel ch=new NotificationChannel(CH,"تذكيرات رتّب",NotificationManager.IMPORTANCE_HIGH);ch.setDescription("تذكيرات المهام والأنشطة");c.getSystemService(NotificationManager.class).createNotificationChannel(ch);}}
+            static SharedPreferences sp(Context c){return c.getSharedPreferences("rem",0);}
+            static void save(Context c,String j){sp(c).edit().putString("list",j).apply();schedule(c);}
+            static PendingIntent pi(Context c,String id,String t,String x,long at,int f){Intent i=new Intent(c,AlarmReceiver.class).putExtra("id",id).putExtra("title",t).putExtra("text",x).putExtra("at",at);return PendingIntent.getBroadcast(c,id.hashCode(),i,f|PendingIntent.FLAG_IMMUTABLE);}
+            /** يلغي كل التنبيهات القديمة ثم يجدول أول موعد قادم لكل تذكير (نفس requestCode = لا تكرار). */
+            static void schedule(Context c){try{AlarmManager am=c.getSystemService(AlarmManager.class);SharedPreferences p=sp(c);
+              JSONArray old=new JSONArray(p.getString("ids","[]"));
+              for(int k=0;k<old.length();k++){PendingIntent o=pi(c,old.getString(k),"","",0,PendingIntent.FLAG_NO_CREATE);if(o!=null){am.cancel(o);o.cancel();}}
+              JSONArray l=new JSONArray(p.getString("list","[]")),ids=new JSONArray();long now=System.currentTimeMillis();
+              for(int k=0;k<l.length();k++){JSONObject r=l.getJSONObject(k);JSONArray t=r.getJSONArray("times");long at=0;
+                for(int q=0;q<t.length();q++)if(t.getLong(q)>now){at=t.getLong(q);break;}
+                if(at==0)continue;String id=r.getString("id");PendingIntent pi=pi(c,id,r.getString("title"),r.getString("text"),at,PendingIntent.FLAG_UPDATE_CURRENT);
+                if(Build.VERSION.SDK_INT<31||am.canScheduleExactAlarms())am.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP,at,pi);else am.setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP,at,pi);
+                ids.put(id);}
+              p.edit().putString("ids",ids.toString()).apply();}catch(Exception e){}}
+            static void notifyNow(Context c,String id,String title,String text){channel(c);
+              Intent o=new Intent(c,MainActivity.class).putExtra("open",id).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP|Intent.FLAG_ACTIVITY_CLEAR_TOP);
+              PendingIntent tap=PendingIntent.getActivity(c,id.hashCode(),o,PendingIntent.FLAG_UPDATE_CURRENT|PendingIntent.FLAG_IMMUTABLE);
+              Notification.Builder b=Build.VERSION.SDK_INT>=26?new Notification.Builder(c,CH):new Notification.Builder(c);
+              b.setSmallIcon(android.R.drawable.ic_popup_reminder).setContentTitle("🌿 "+title).setContentText(text).setStyle(new Notification.BigTextStyle().bigText(text)).setColor(0xFF48685A).setAutoCancel(true).setContentIntent(tap).setCategory(Notification.CATEGORY_REMINDER).setPriority(Notification.PRIORITY_HIGH);
+              c.getSystemService(NotificationManager.class).notify(id.hashCode(),b.build());}
+            static void testAlarm(Context c){AlarmManager am=c.getSystemService(AlarmManager.class);long at=System.currentTimeMillis()+60000;PendingIntent p=pi(c,"test","اختبار المنبّه","وصل التنبيه من منبّه النظام 🌿",at,PendingIntent.FLAG_UPDATE_CURRENT);
+              if(Build.VERSION.SDK_INT<31||am.canScheduleExactAlarms())am.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP,at,p);else am.setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP,at,p);}
+            public static class AlarmReceiver extends BroadcastReceiver{@Override public void onReceive(Context c,Intent i){
+              String id=i.getStringExtra("id");notifyNow(c,id,i.getStringExtra("title"),i.getStringExtra("text"));
+              long at=i.getLongExtra("at",0);
+              try{JSONArray l=new JSONArray(sp(c).getString("list","[]"));for(int k=0;k<l.length();k++){JSONObject r=l.getJSONObject(k);if(r.getString("id").equals(id)){JSONArray t=r.getJSONArray("times"),n=new JSONArray();for(int q=0;q<t.length();q++)if(t.getLong(q)>at)n.put(t.getLong(q));r.put("times",n);}}sp(c).edit().putString("list",l.toString()).apply();}catch(Exception e){}
+              schedule(c);}}
+            public static class BootReceiver extends BroadcastReceiver{@Override public void onReceive(Context c,Intent i){schedule(c);}}
+          }
+          RATTIB_EOF
           cp rattib.html app/src/main/assets/rattib.html
 
-          cat > settings.gradle <<'GRADLE'
-          pluginManagement {
-              repositories { google(); mavenCentral(); gradlePluginPortal() }
-          }
-          dependencyResolutionManagement {
-              repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-              repositories { google(); mavenCentral() }
-          }
-          rootProject.name = 'Rattib'
-          include ':app'
-          GRADLE
-
-          cat > build.gradle <<'GRADLE'
-          plugins {
-              id 'com.android.application' version '8.6.1' apply false
-          }
-          GRADLE
-
-          cat > gradle.properties <<'GRADLE'
-          org.gradle.jvmargs=-Xmx2048m -Dfile.encoding=UTF-8
-          android.useAndroidX=true
-          GRADLE
-
-          cat > app/build.gradle <<'GRADLE'
-          plugins {
-              id 'com.android.application'
-          }
-          
-          android {
-              namespace 'com.rattib.app'
-              compileSdk 35
-          
-              defaultConfig {
-                  applicationId 'com.rattib.app'
-                  minSdk 23
-                  targetSdk 35
-                  versionCode 1
-                  versionName '1.0'
-              }
-          }
-          
-          dependencies {
-              implementation 'androidx.webkit:webkit:1.11.0'
-          }
-          GRADLE
-
-          cat > app/src/main/AndroidManifest.xml <<'XML'
-          <manifest xmlns:android="http://schemas.android.com/apk/res/android">
-              <uses-permission android:name="android.permission.INTERNET" />
-              <uses-permission android:name="android.permission.RECORD_AUDIO" />
-              <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-              <uses-permission android:name="android.permission.VIBRATE" />
-          
-              <application
-                  android:label="رتّب"
-                  android:theme="@android:style/Theme.Material.Light.NoActionBar"
-                  android:usesCleartextTraffic="true"
-                  android:allowBackup="false">
-                  <activity
-                      android:name=".MainActivity"
-                      android:exported="true">
-                      <intent-filter>
-                          <action android:name="android.intent.action.MAIN" />
-                          <category android:name="android.intent.category.LAUNCHER" />
-                      </intent-filter>
-                  </activity>
-              </application>
-          </manifest>
-          XML
-
-          cat > app/src/main/java/com/rattib/app/MainActivity.java <<'JAVA'
-          package com.rattib.app;
-          
-          import android.Manifest;
-          import android.app.Activity;
-          import android.os.Build;
-          import android.os.Bundle;
-          import android.webkit.WebChromeClient;
-          import android.webkit.WebView;
-          import android.webkit.WebViewClient;
-          import android.webkit.PermissionRequest;
-          import android.content.pm.PackageManager;
-          import androidx.webkit.WebViewAssetLoader;
-          import androidx.webkit.WebViewAssetLoader.AssetsPathHandler;
-          import androidx.webkit.WebViewClientCompat;
-          import androidx.webkit.WebViewAssetLoader;
-          
-          public class MainActivity extends Activity {
-              private WebView webView;
-              private PermissionRequest pendingRequest;
-              private static final int AUDIO_PERMISSION_CODE = 1001;
-          
-              @Override
-              protected void onCreate(Bundle savedInstanceState) {
-                  super.onCreate(savedInstanceState);
-                  webView = new WebView(this);
-                  setContentView(webView);
-          
-                  WebViewAssetLoader assetLoader = new WebViewAssetLoader.Builder()
-                      .addPathHandler("/assets/", new WebViewAssetLoader.AssetsPathHandler(this))
-                      .build();
-          
-                  webView.getSettings().setJavaScriptEnabled(true);
-                  webView.getSettings().setDomStorageEnabled(true);
-                  webView.getSettings().setMediaPlaybackRequiresUserGesture(false);
-                  webView.setWebViewClient(new WebViewClientCompat() {
-                      @Override
-                      public android.webkit.WebResourceResponse shouldInterceptRequest(WebView view, android.webkit.WebResourceRequest request) {
-                          return assetLoader.shouldInterceptRequest(request.getUrl());
-                      }
-                  });
-          
-                  webView.setWebChromeClient(new WebChromeClient() {
-                      @Override
-                      public void onPermissionRequest(PermissionRequest request) {
-                          runOnUiThread(() -> {
-                              if (Build.VERSION.SDK_INT >= 23 &&
-                                  checkSelfPermission(Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
-                                  pendingRequest = request;
-                                  requestPermissions(new String[]{Manifest.permission.RECORD_AUDIO}, AUDIO_PERMISSION_CODE);
-                              } else {
-                                  request.grant(request.getResources());
-                              }
-                          });
-                      }
-                  });
-                  webView.loadUrl("https://appassets.androidplatform.net/assets/rattib.html");
-              }
-          
-              @Override
-              public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-                  super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-                  if (requestCode == AUDIO_PERMISSION_CODE && pendingRequest != null) {
-                      if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                          pendingRequest.grant(pendingRequest.getResources());
-                      } else {
-                          pendingRequest.deny();
-                      }
-                      pendingRequest = null;
-                  }
-              }
-          
-              @Override
-              public void onBackPressed() {
-                  if (webView != null && webView.canGoBack()) webView.goBack();
-                  else super.onBackPressed();
-              }
-          }
-          JAVA
-
-      - name: Build APK
-        run: gradle assembleDebug
-
-      - name: Upload APK
-        uses: actions/upload-artifact@v4
-        with:
-          name: Rattib-APK
-          path: app/build/outputs/apk/debug/app-debug.apk
-          if-no-files-found: error
+      - run: gradle assembleDebug
+      - uses: actions/upload-artifact@v4
+        with: {name: rattib-apk, path: app/build/outputs/apk/debug/app-debug.apk}
