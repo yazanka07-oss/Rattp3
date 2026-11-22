@@ -141,37 +141,34 @@ jobs:
           RATTIB_EOF
           cp rattib.html app/src/main/assets/rattib.html
 
-      - name: Fixed signing key (build FAILS if invalid - never signs with a random key)
+      - name: Fixed signing key (build FAILS if the key file is missing)
         run: |
-          echo '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' | base64 -d > app/rattib.p12
+          test -f rattib.p12 || { echo "ERROR: upload rattib.p12 to the repo root"; exit 1; }
+          cp rattib.p12 app/rattib.p12
           keytool -list -keystore app/rattib.p12 -storetype pkcs12 -storepass android | grep -E "androiddebugkey|SHA-256|SHA256"
-      - name: App launcher icon
+      - name: App launcher icon (optional - skipped if rattib-icon.png is missing)
+        continue-on-error: true
         run: |
-          mkdir -p app/src/main/res/mipmap-anydpi-v26 app/src/main/res/drawable-nodpi app/src/main/res/values
-          mkdir -p app/src/main/res/mipmap-mdpi
-          base64 -d > app/src/main/res/mipmap-mdpi/ic_launcher.png <<'B64_EOF'
-          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
-          Db
+          [ -f rattib-icon.png ] || { echo "no rattib-icon.png, using default icon"; exit 0; }
+          IM=convert; command -v magick >/dev/null && IM=magick
+          R=app/src/main/res
+          mkdir -p $R/mipmap-anydpi-v26 $R/drawable-nodpi $R/values
+          for p in mdpi:48 hdpi:72 xhdpi:96 xxhdpi:144 xxxhdpi:192; do
+            mkdir -p $R/mipmap-${p%%:*}
+            $IM rattib-icon.png -resize ${p##*:}x${p##*:} $R/mipmap-${p%%:*}/ic_launcher.png
+          done
+          $IM rattib-icon.png -resize 340x340 -background '#FCF4E9' -gravity center -extent 432x432 $R/drawable-nodpi/ic_foreground.png
+          echo '<resources><color name="ic_bg">#FCF4E9</color></resources>' > $R/values/colors.xml
+          echo '<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android"><background android:drawable="@color/ic_bg"/><foreground android:drawable="@drawable/ic_foreground"/></adaptive-icon>' > $R/mipmap-anydpi-v26/ic_launcher.xml
+          sed -i 's|<application |<application android:icon="@mipmap/ic_launcher" |' app/src/main/AndroidManifest.xml
+      - run: gradle assembleDebug -Pvc=${{ github.run_number }}
+      - name: Show APK signature and version (for comparing builds)
+        continue-on-error: true
+        env:
+          ANDROID_HOME: /usr/local/lib/android/sdk
+        run: |
+          AS=$(ls $ANDROID_HOME/build-tools/*/apksigner | tail -1)
+          "$AS" verify --print-certs app/build/outputs/apk/debug/app-debug.apk | head -4
+      - uses: actions/upload-artifact@v4
+        with: {name: rattib-apk, path: app/build/outputs/apk/debug/app-debug.apk}
+        
