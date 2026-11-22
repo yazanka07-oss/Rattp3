@@ -150,6 +150,7 @@ jobs:
         continue-on-error: true
         run: |
           [ -f rattib-icon.png ] || { echo "no rattib-icon.png, using default icon"; exit 0; }
+          command -v convert >/dev/null 2>&1 || command -v magick >/dev/null 2>&1 || sudo apt-get install -y -q imagemagick >/dev/null 2>&1 || true
           IM=convert; command -v magick >/dev/null && IM=magick
           R=app/src/main/res
           mkdir -p $R/mipmap-anydpi-v26 $R/drawable-nodpi $R/values
@@ -171,4 +172,3 @@ jobs:
           "$AS" verify --print-certs app/build/outputs/apk/debug/app-debug.apk | head -4
       - uses: actions/upload-artifact@v4
         with: {name: rattib-apk, path: app/build/outputs/apk/debug/app-debug.apk}
-        
